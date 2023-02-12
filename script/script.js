@@ -1,61 +1,57 @@
+const car = {
+  model: 'bmw',
+  year: 2015,
+  color: 'grin',
+  signal (){
+    alert('fa fa');
+  },
+}
+car.color = 'black';
+car.type = 'electric';
+car.signal();
+console.log(car);
 
-let a = prompt('Введіть перше число',0);
-let b = prompt('Введіть друге число',0);
-function maxNumber(a,b){
-  if (a > b){
-    return a ;
-  } else if (a === b){
-    return "a = b";
-  } else {
-    return b;
+const salaries = {
+  fronted: 12000,
+  backend: 10000,
+  designer: 8000,
+
+  dayPay() {
+      alert('We must pay salary on Tuesday!');
+  },
+  total () {
+    let sum = 0;
+    for(key in salaries )
+      if (typeof salaries[key] === 'number') {
+        sum += salaries[key];
+        ;
+      };
+      console.log(sum);
+    }
   }
+salaries.total();
+salaries.manager = 5000;
+salaries.total();
+
+function opSystem(brand, system, cost){
+  this.brand = brand;
+  this.system = system;
+  this.cost = cost;
+  this[Symbol.toPrimitive] = function (hint){
+    switch(hint){
+        case 'string':
+            return this.brand
+        case 'number':
+            return this.cost
+        case 'default':
+            return this.brand + ' ' + this.system + ' ' + this.cost + ' // '
+    }
+};
 }
-alert (maxNumber(a,b));
-
-let number = prompt('Enter the number',0);
-function revers(number) {
-  if (number) {
-  -number;
-  return -number;}
-  else{
-    return -number;
-  }
-}
-alert (revers(number));
-
-let number1 = prompt('Enter the number',0);
-let count = prompt('Enter the number of times',0);
-function three(number1,count) {
-if (number1){
-  number1 = number1 + (3*count);
-  return number1;}
-  else{
-    return number1;
-  }
-}
-alert (three(+number1,+count));
-
-
-
-let metric = prompt('Enter metric');
-let km = prompt ('Enter how many km',0);
-let m;
-let cm;
-function getMatric(metric, km, m, cm){
- let convert = metric === 'm' ? m(km) : cm(km);
- return convert;
-}
-alert(`${getMatric(metric, km, KmToM, KmToCm)} ${metric}`);
-getMatric(metric, km, KmToM, KmToCm);
-
-function KmToM (km) {
-  m = km * 1000;
-    return m;
-}
-function KmToCm (km) {
-  cm = km * 100000;
-    return cm;
-  }
-  
-
-
+const dell = new opSystem('Dell', 'windows', 800);
+const apple = new opSystem('Apple', 'MAC OS', 1700);
+let group = {};
+group = dell + apple;
+console.log(String(dell));
+console.log(+apple);
+console.log(group);
